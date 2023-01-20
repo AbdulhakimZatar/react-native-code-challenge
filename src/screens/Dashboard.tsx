@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-function HomeScreen() {
+function DashboardScreen(): JSX.Element {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <Text>DashboardScreen</Text>
     </View>
   );
 }
 
-export default HomeScreen;
+export default DashboardScreen;
