@@ -13,17 +13,17 @@ const Tab = createBottomTabNavigator<any>();
 function MainNavigation(): JSX.Element {
   return (
     <NavigationContainer>
-      <Tab.Navigator tabBar={props => <Navigator {...props} />}>
+      <Tab.Navigator tabBar={Navigator} initialRouteName={SCREENS.SPLASH}>
         <Tab.Screen name={SCREENS.DASHBOARD} component={DashboardScreen} />
         <Tab.Screen name={SCREENS.MORE} component={MoreScreen} />
+        <Tab.Screen
+          name={SCREENS.REGISTRATION}
+          component={RegistrationScreen}
+        />
         <Tab.Screen
           name={SCREENS.SPLASH}
           component={SplashScreen}
           options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name={SCREENS.REGISTRATION}
-          component={RegistrationScreen}
         />
       </Tab.Navigator>
     </NavigationContainer>

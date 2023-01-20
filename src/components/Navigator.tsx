@@ -10,6 +10,10 @@ import {SCREENS} from '../constants/screens';
 function Navigator({navigation, state}): JSX.Element {
   const currentScreen = state.index;
 
+  if (currentScreen > 2) {
+    return null;
+  }
+
   return (
     <BottomNavigation
       style={styles.bottomNavigation}
