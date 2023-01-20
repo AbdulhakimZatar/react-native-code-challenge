@@ -2,15 +2,16 @@ import React from 'react';
 import * as eva from '@eva-design/eva';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
-import HomeScreen from './screens/Home';
+
 import {theme} from './theme';
+import MainNavigation from './navigation/MainNavigator';
 
 function App(): JSX.Element {
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={theme}>
-        <HomeScreen />
+        <MainNavigation />
       </ApplicationProvider>
     </>
   );
