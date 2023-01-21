@@ -3,4 +3,5 @@ export const SCREENS = {
   REGISTRATION: 'Registration',
   DASHBOARD: 'Dashboard',
   MORE: 'More',
+  MAIN: 'Main',
 };
