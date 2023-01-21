@@ -1,14 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {LanguageDetectorAsyncModule} from 'i18next';
 import {NativeModules, Platform, I18nManager} from 'react-native';
+import {STORE_LANGUAGE_KEY} from '../constants';
 
 const deviceLanguage =
   Platform.OS === 'ios'
     ? NativeModules.SettingsManager.settings.AppleLocale ||
       NativeModules.SettingsManager.settings.AppleLanguages[0] //iOS 13
     : NativeModules.I18nManager.localeIdentifier;
-
-const STORE_LANGUAGE_KEY = 'settings.lang';
 
 export const languageDetectorPlugin: LanguageDetectorAsyncModule = {
   type: 'languageDetector',

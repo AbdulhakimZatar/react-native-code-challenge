@@ -15,14 +15,17 @@ import {phoneRegExp} from '../constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../constants/screens';
+import {useAuthStore} from '../authStore';
 
 function RegistrationScreen(): JSX.Element {
+  const {handleLogin} = useAuthStore();
   const {t} = useTranslation();
   const navigation: any = useNavigation();
 
   const handleSubmit = async values => {
-    await AsyncStorage.setItem('settings.user', JSON.stringify(values));
-    console.log('Navigation to Splash');
+    const user = JSON.stringify(values);
+    await AsyncStorage.setItem('settings.user', user);
+    handleLogin(user);
     navigation.navigate(SCREENS.SPLASH);
   };
 
@@ -78,7 +81,6 @@ function RegistrationScreen(): JSX.Element {
             />
             <Input
               textStyle={styles.input}
-              style={styles.input}
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
               value={values.email}
@@ -90,7 +92,6 @@ function RegistrationScreen(): JSX.Element {
             />
             <Input
               textStyle={styles.input}
-              style={styles.input}
               onChangeText={handleChange('phone')}
               onBlur={handleBlur('phone')}
               value={values.phone}
