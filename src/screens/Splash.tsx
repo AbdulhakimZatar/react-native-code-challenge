@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native';
 import {SCREENS} from '../constants/screens';
 import splashyLoader from '../assets/splashy-loader.json';
 import {Layout} from '@ui-kitten/components';
-import {useAuthStore} from '../authStore';
+import {useAuthStore} from '../store/auth';
 
 function SplashScreen({navigation}): JSX.Element {
   const [animationLoaded, setAnimationLoaded] = useState(false);

@@ -15,7 +15,7 @@ import {phoneRegExp} from '../constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../constants/screens';
-import {useAuthStore} from '../authStore';
+import {useAuthStore} from '../store/auth';
 
 function RegistrationScreen(): JSX.Element {
   const {handleLogin} = useAuthStore();
