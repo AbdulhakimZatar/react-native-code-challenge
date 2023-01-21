@@ -17,4 +17,6 @@ export default {
   phone: 'رقم الهاتف',
   dateBirth: 'تاريخ الميلاد',
   register: 'تسجيل',
+  logout: 'تسجيل الخروج',
+  changeLanguage: 'تغيير اللغة إلى الإنجليزية',
 };

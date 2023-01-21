@@ -1,11 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 import React, {createContext, useContext, useEffect, useReducer} from 'react';
+import {SCREENS} from './constants/screens';
 
 export interface GlobalStateInterface {
   isAuthLoading: boolean;
   isAuthenticated: boolean;
   user: {
-    id: number;
+    id: string;
     email: string;
     phone: string;
     dateBirth: string;
@@ -37,12 +39,12 @@ export const reducer = (
     case AUTH_STORE_ACTIONS.TOGGLE_AUTH_LOADING:
       return {
         ...state,
-        isAuthLoading: !state.isAuthLoading,
+        isAuthLoading: action.payload,
       };
     case AUTH_STORE_ACTIONS.TOGGLE_AUTHENTICATED:
       return {
         ...state,
-        isAuthenticated: !state.isAuthenticated,
+        isAuthenticated: action.payload,
       };
     case AUTH_STORE_ACTIONS.SET_AUTH_USER:
       return {
@@ -57,32 +59,58 @@ export const reducer = (
 export const AuthContext = createContext({
   state: initialGlobalState,
   dispatch: value => value,
+  handleLogout: () => {},
+  handleLogin: user => user,
 });
 
 function AuthStore(props) {
   const [state, dispatch] = useReducer(reducer, initialGlobalState);
+  const navigation: any = useNavigation();
 
   useEffect(() => {
     (async () => {
       AsyncStorage.getItem('settings.user').then(user => {
         if (user) {
-          dispatch({
-            type: AUTH_STORE_ACTIONS.SET_AUTH_USER,
-            payload: JSON.parse(user),
-          });
-          dispatch({
-            type: AUTH_STORE_ACTIONS.TOGGLE_AUTHENTICATED,
-          });
+          handleLogin(user);
         }
         dispatch({
           type: AUTH_STORE_ACTIONS.TOGGLE_AUTH_LOADING,
+          payload: false,
         });
       });
     })();
   }, []);
 
+  const handleLogout = () => {
+    dispatch({
+      type: AUTH_STORE_ACTIONS.SET_AUTH_USER,
+      payload: initialGlobalState.user,
+    });
+    dispatch({
+      type: AUTH_STORE_ACTIONS.TOGGLE_AUTHENTICATED,
+      payload: false,
+    });
+    AsyncStorage.removeItem('settings.user');
+    // remove history and disable back button
+    navigation.reset({
+      index: 0,
+      routes: [{name: SCREENS.SPLASH}],
+    });
+  };
+
+  const handleLogin = user => {
+    dispatch({
+      type: AUTH_STORE_ACTIONS.SET_AUTH_USER,
+      payload: JSON.parse(user),
+    });
+    dispatch({
+      type: AUTH_STORE_ACTIONS.TOGGLE_AUTHENTICATED,
+      payload: true,
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{state, dispatch}}>
+    <AuthContext.Provider value={{state, dispatch, handleLogin, handleLogout}}>
       {props.children}
     </AuthContext.Provider>
   );

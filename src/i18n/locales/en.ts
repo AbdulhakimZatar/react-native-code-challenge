@@ -17,4 +17,6 @@ export default {
   phone: 'Phone',
   dateBirth: 'Date of birth',
   register: 'Register',
+  logout: 'Logout',
+  changeLanguage: 'Change language to Arabic',
 };

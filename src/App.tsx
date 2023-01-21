@@ -3,7 +3,6 @@ import * as eva from '@eva-design/eva';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 
-import AuthStore from './authStore';
 import {theme} from './theme';
 import MainNavigation from './navigation/MainNavigator';
 
@@ -14,9 +13,7 @@ function App(): JSX.Element {
     <>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={theme}>
-        <AuthStore>
-          <MainNavigation />
-        </AuthStore>
+        <MainNavigation />
       </ApplicationProvider>
     </>
   );
