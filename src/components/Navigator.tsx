@@ -10,7 +10,7 @@ import {SCREENS} from '../constants/screens';
 function Navigator({navigation, state, t}): JSX.Element {
   const currentScreen = state.index;
 
-  if (currentScreen > 2) {
+  if (currentScreen > 1) {
     return null;
   }
 

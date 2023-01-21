@@ -1,23 +1,36 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import LottieView from 'lottie-react-native';
-import {useNavigation} from '@react-navigation/core';
 import {SCREENS} from '../constants/screens';
 import splashyLoader from '../assets/splashy-loader.json';
 import {Layout} from '@ui-kitten/components';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function SplashScreen(): JSX.Element {
+function SplashScreen({navigation}): JSX.Element {
   const [animationLoaded, setAnimationLoaded] = useState(false);
-  const navigation: any = useNavigation();
+  const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
 
   const ref = useRef(null);
 
   useEffect(() => {
-    if (animationLoaded) {
-      // TODO: Add auth logic here
-      navigation.navigate(SCREENS.DASHBOARD);
+    AsyncStorage.getItem('settings.user').then(user => {
+      if (user) {
+        setUser(JSON.parse(user));
+      }
+      setAuthLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (animationLoaded && !authLoading) {
+      if (user) {
+        navigation.replace(SCREENS.MAIN);
+      } else {
+        navigation.replace(SCREENS.REGISTRATION);
+      }
     }
-  }, [animationLoaded, navigation]);
+  }, [animationLoaded, navigation, authLoading, user]);
 
   const onAnimationFinish = () => {
     setAnimationLoaded(true);

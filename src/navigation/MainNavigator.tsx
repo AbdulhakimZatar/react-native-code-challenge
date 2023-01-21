@@ -1,39 +1,45 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
-import Navigator from '../components/Navigator';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
 import {SCREENS} from '../constants/screens';
-import DashboardScreen from '../screens/Dashboard';
-import MoreScreen from '../screens/More';
 import RegistrationScreen from '../screens/Registration';
 import SplashScreen from '../screens/Splash';
+import MainStack from './MainStack';
 
-const Tab = createBottomTabNavigator<any>();
+const Stack = createNativeStackNavigator();
 
 function MainNavigation(): JSX.Element {
-  const {t} = useTranslation();
-
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        tabBar={(props): JSX.Element => <Navigator {...props} t={t} />}
-        initialRouteName={SCREENS.SPLASH}
-        screenOptions={({route}) => ({
-          title: t('screen.' + route.name.toLowerCase()),
-        })}>
-        <Tab.Screen name={SCREENS.DASHBOARD} component={DashboardScreen} />
-        <Tab.Screen name={SCREENS.MORE} component={MoreScreen} />
-        <Tab.Screen
+      <Stack.Navigator initialRouteName={SCREENS.SPLASH}>
+        <Stack.Screen
           name={SCREENS.REGISTRATION}
           component={RegistrationScreen}
+          options={{
+            headerTitle: 'React Native Code Challenge',
+            headerStyle: {
+              backgroundColor: '#5B31B2',
+            },
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#F5F5F5',
+            },
+            headerTitleAlign: 'center',
+          }}
         />
-        <Tab.Screen
+        <Stack.Screen
           name={SCREENS.SPLASH}
           component={SplashScreen}
           options={{headerShown: false}}
         />
-      </Tab.Navigator>
+        <Stack.Screen
+          name={SCREENS.MAIN}
+          component={MainStack}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
