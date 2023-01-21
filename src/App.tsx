@@ -6,6 +6,8 @@ import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {theme} from './theme';
 import MainNavigation from './navigation/MainNavigator';
 
+import './i18n';
+
 function App(): JSX.Element {
   return (
     <>
