@@ -7,7 +7,7 @@ import {
 } from '@ui-kitten/components';
 import {SCREENS} from '../constants/screens';
 
-function Navigator({navigation, state}): JSX.Element {
+function Navigator({navigation, state, t}): JSX.Element {
   const currentScreen = state.index;
 
   if (currentScreen > 2) {
@@ -21,9 +21,12 @@ function Navigator({navigation, state}): JSX.Element {
       onSelect={index =>
         navigation.navigate(index === 0 ? SCREENS.DASHBOARD : SCREENS.MORE)
       }>
-      <BottomNavigationTab title="Dashboard" icon={<Icon name="home" />} />
       <BottomNavigationTab
-        title="More"
+        title={t('screen.dashboard')}
+        icon={<Icon name="home" />}
+      />
+      <BottomNavigationTab
+        title={t('screen.more')}
         icon={<Icon name="more-horizontal" />}
       />
     </BottomNavigation>
