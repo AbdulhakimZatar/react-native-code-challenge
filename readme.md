@@ -11,11 +11,11 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installation
 1. Clone the repository:
 ```
-git clone https://github.com/[username]/react-native-cli-project.git
+git clone https://github.com/AbdulhakimZatar/react-native-code-challenge.git
 ```
 2. Navigate to the project directory:
 ```
-cd react-native-cli-project
+cd react-native-code-challenge
 ```
 3. Install the dependencies:
 ```
