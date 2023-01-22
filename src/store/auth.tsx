@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import React, {createContext, useContext, useEffect, useReducer} from 'react';
-import {SCREENS} from './constants/screens';
+import {SCREENS} from '../constants/screens';
 
 export interface GlobalStateInterface {
   isAuthLoading: boolean;

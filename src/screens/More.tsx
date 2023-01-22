@@ -2,7 +2,7 @@ import React from 'react';
 import RNRestart from 'react-native-restart';
 import {I18nManager, StyleSheet} from 'react-native';
 import {Input, Layout, Button} from '@ui-kitten/components';
-import {useAuthStore} from '../authStore';
+import {useAuthStore} from '../store/auth';
 import {useTranslation} from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {STORE_LANGUAGE_KEY} from '../constants';

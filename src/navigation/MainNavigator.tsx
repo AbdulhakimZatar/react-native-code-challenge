@@ -9,7 +9,7 @@ import RegistrationScreen from '../screens/Registration';
 import SplashScreen from '../screens/Splash';
 import MainStack from './MainStack';
 import {headerStyleOptions} from '../constants';
-import AuthStore from '../authStore';
+import AuthStore from '../store/auth';
 
 const Stack = createNativeStackNavigator();
 
