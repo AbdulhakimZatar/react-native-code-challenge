@@ -1,7 +1,7 @@
 import React from 'react';
 import RNRestart from 'react-native-restart';
-import {I18nManager, StyleSheet} from 'react-native';
-import {Input, Layout, Button} from '@ui-kitten/components';
+import {I18nManager, ScrollView, StyleSheet} from 'react-native';
+import {Input, Button} from '@ui-kitten/components';
 import {useAuthStore} from '../store/auth';
 import {useTranslation} from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,7 +19,7 @@ function MoreScreen(): JSX.Element {
   };
 
   return (
-    <Layout style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <>
         <Input
           textStyle={styles.input}
@@ -63,7 +63,7 @@ function MoreScreen(): JSX.Element {
           {t('logout')}
         </Button>
       </>
-    </Layout>
+    </ScrollView>
   );
 }
 
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     width: '100%',
     gap: 20,
     padding: '10%',
+    backgroundColor: '#fff',
   },
   datePickcker: {
     width: '100%',
