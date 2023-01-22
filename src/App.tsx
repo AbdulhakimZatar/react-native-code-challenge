@@ -24,6 +24,7 @@ export default App;
 
 const styles = StyleSheet.create({
   safeArea: {
+    backgroundColor: '#ebebf7',
     flex: 1,
   },
 });

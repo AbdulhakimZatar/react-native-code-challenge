@@ -12,7 +12,6 @@ function DashboardScreen() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
   moment.locale(i18n.language);
-  I18nManager.allowRTL(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -85,6 +84,7 @@ function DashboardScreen() {
     <Layout style={styles.container}>
       <Input
         style={styles.search}
+        textStyle={styles.searchText}
         placeholder={t('search')}
         value={search}
         onChangeText={setSearch}
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
   },
   list: {
     width: '100%',
+    backgroundColor: '#fff',
   },
   item: {
     display: 'flex',
@@ -144,10 +145,12 @@ const styles = StyleSheet.create({
   },
   search: {
     color: '#1a1a1a',
-    backgroundColor: 'white',
     borderBottoMWidth: 1,
     borderRadius: 0,
     borderBottomColor: '#1a1a1a',
+  },
+  searchText: {
+    textAlign: I18nManager.isRTL ? 'right' : 'left',
   },
   bold: {
     fontWeight: 'bold',
