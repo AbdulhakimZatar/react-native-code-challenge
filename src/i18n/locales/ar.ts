@@ -19,4 +19,6 @@ export default {
   register: 'تسجيل',
   logout: 'تسجيل الخروج',
   changeLanguage: 'تغيير اللغة إلى الإنجليزية',
+  search: 'البحث عن الاسم',
+  transferred: 'أجرى حوالة',
 };

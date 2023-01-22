@@ -19,4 +19,6 @@ export default {
   register: 'Register',
   logout: 'Logout',
   changeLanguage: 'Change language to Arabic',
+  search: 'Search for name',
+  transferred: 'transferred',
 };

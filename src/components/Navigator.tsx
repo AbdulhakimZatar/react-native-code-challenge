@@ -37,7 +37,6 @@ export default Navigator;
 
 const styles = StyleSheet.create({
   bottomNavigation: {
-    marginTop: 8,
     position: 'absolute',
     bottom: 0,
     backgroundColor: '#ebebf7',
