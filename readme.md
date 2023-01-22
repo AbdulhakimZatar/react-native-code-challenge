@@ -30,3 +30,6 @@ For Android:
 ```
 npm run android
 ```
+
+## Quality Check
+<img width="1302" alt="image" src="https://user-images.githubusercontent.com/67221250/213911263-b87d65d9-cdbd-4d81-abb0-624aec2dd89d.png">
