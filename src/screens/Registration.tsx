@@ -110,7 +110,7 @@ function RegistrationScreen(): JSX.Element {
                   onBlur={handleBlur('phone')}
                   value={values.phone}
                   label={t('phone')}
-                  placeholder="0096277777777"
+                  placeholder="+96277777777"
                   keyboardType="phone-pad"
                   returnKeyType="done"
                   status={touched.phone && errors.phone ? 'danger' : 'primary'}
