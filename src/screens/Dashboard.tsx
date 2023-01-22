@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Input, Layout, List, Text} from '@ui-kitten/components';
 import {I18nManager, RefreshControl, StyleSheet} from 'react-native';
-import {dashboardData} from '../data/dashboard';
+import dashboardData from '../data/dashboard.json';
 import moment from 'moment';
 import 'moment/locale/ar';
 import {t} from 'i18next';
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   date: {
     color: '#fff',
     backgroundColor: '#1a1a1a',
-    textAlign: I18nManager.isRTL ? 'right' : 'right',
+    textAlign: 'right',
     width: '100%',
     padding: 4,
   },
