@@ -1,4 +1,3 @@
-#import <React/RCTI18nUtil.h> //<== AmerllicA config
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -7,8 +6,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [[RCTI18nUtil sharedInstance] allowRTL:YES]; //<== AmerllicA config
-  [[RCTI18nUtil sharedInstance] forceRTL:YES]; //<== AmerllicA config
   self.moduleName = @"reactNativeCodeChallenge";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
