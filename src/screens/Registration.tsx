@@ -22,12 +22,12 @@ function RegistrationScreen(): JSX.Element {
   const {t} = useTranslation();
   const navigation: any = useNavigation();
 
-  async function handleSubmit(values) {
+  const handleSubmit = async values => {
     const user = JSON.stringify(values);
     await AsyncStorage.setItem('settings.user', user);
     handleLogin(user);
     navigation.navigate(SCREENS.SPLASH);
-  }
+  };
 
   return (
     <Layout style={styles.container}>
@@ -113,13 +113,13 @@ function RegistrationScreen(): JSX.Element {
               startView={CalendarViewModes.YEAR}
               min={new Date(1900, 1, 1)}
               max={new Date()}
-              onSelect={function (nextDate) {
+              onSelect={nextDate =>
                 setValues({
                   ...values,
                   dateBirth: nextDate.toDateString(),
-                });
-              }}
-              onBlur={function () {
+                })
+              }
+              onBlur={() => {
                 setTimeout(() => {
                   setTouched({
                     dateBirth: true,
