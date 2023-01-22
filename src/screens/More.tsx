@@ -4,7 +4,7 @@ import {I18nManager, ScrollView, StyleSheet} from 'react-native';
 import {Input, Button} from '@ui-kitten/components';
 import {useAuthStore} from '../store/auth';
 import {useTranslation} from 'react-i18next';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import {STORE_LANGUAGE_KEY} from '../constants';
 
 function MoreScreen(): JSX.Element {
@@ -13,7 +13,7 @@ function MoreScreen(): JSX.Element {
 
   const handleSwitchLanguage = async () => {
     const newLanguage = I18nManager.isRTL ? 'en' : 'ar';
-    await AsyncStorage.setItem(STORE_LANGUAGE_KEY, newLanguage);
+    await EncryptedStorage.setItem(STORE_LANGUAGE_KEY, newLanguage);
     I18nManager.forceRTL(!I18nManager.isRTL);
     RNRestart.Restart();
   };
