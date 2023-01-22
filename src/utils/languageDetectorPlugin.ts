@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import {LanguageDetectorAsyncModule} from 'i18next';
 import {NativeModules, Platform, I18nManager} from 'react-native';
 import {STORE_LANGUAGE_KEY} from '../constants';
@@ -17,7 +17,7 @@ export const languageDetectorPlugin: LanguageDetectorAsyncModule = {
   detect: async function (callback) {
     try {
       //get stored language from Async storage
-      await AsyncStorage.getItem(STORE_LANGUAGE_KEY).then(language => {
+      await EncryptedStorage.getItem(STORE_LANGUAGE_KEY).then(language => {
         if (language) {
           //if language was stored before, use this language in the app
           return callback(language);
@@ -35,7 +35,7 @@ export const languageDetectorPlugin: LanguageDetectorAsyncModule = {
       //save a user's language choice in Async storage
       I18nManager.forceRTL(language === 'ar');
 
-      await AsyncStorage.setItem(STORE_LANGUAGE_KEY, language);
+      await EncryptedStorage.setItem(STORE_LANGUAGE_KEY, language);
     } catch (error) {}
   },
 };

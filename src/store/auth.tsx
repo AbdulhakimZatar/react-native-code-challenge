@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import {useNavigation} from '@react-navigation/native';
 import React, {createContext, useContext, useEffect, useReducer} from 'react';
 import {SCREENS} from '../constants/screens';
@@ -69,7 +69,7 @@ function AuthStore(props) {
 
   useEffect(() => {
     (async () => {
-      AsyncStorage.getItem('settings.user').then(user => {
+      EncryptedStorage.getItem('settings.user').then(user => {
         if (user) {
           handleLogin(user);
         }
@@ -90,8 +90,7 @@ function AuthStore(props) {
       type: AUTH_STORE_ACTIONS.TOGGLE_AUTHENTICATED,
       payload: false,
     });
-    AsyncStorage.removeItem('settings.user');
-    // remove history and disable back button
+    EncryptedStorage.removeItem('settings.user');
     navigation.reset({
       index: 0,
       routes: [{name: SCREENS.SPLASH}],

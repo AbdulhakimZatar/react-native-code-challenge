@@ -18,7 +18,7 @@ import {
 import {useTranslation} from 'react-i18next';
 import * as yup from 'yup';
 import {phoneRegExp} from '../constants';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../constants/screens';
 import {useAuthStore} from '../store/auth';
@@ -30,7 +30,7 @@ function RegistrationScreen(): JSX.Element {
 
   const handleSubmit = async values => {
     const user = JSON.stringify(values);
-    await AsyncStorage.setItem('settings.user', user);
+    await EncryptedStorage.setItem('settings.user', user);
     handleLogin(user);
     navigation.navigate(SCREENS.SPLASH);
   };
